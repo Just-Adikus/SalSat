@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "742602166391",
+    "project_id": "salsat",
+    "storage_bucket": "salsat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742602166391:android:3c1f6ff0db191dd46df672",
+        "android_client_info": {
+          "package_name": "com.example.sal_sat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742602166391-b5m754ssqdv6d7bltcacop17nbli3jck.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sal_sat",
+            "certificate_hash": "84c65fa97e7b13f7d6c75054b0f365901439d9fa"
+          }
+        },
+        {
+          "client_id": "742602166391-dvb4vb5io7u16pdq3e20m82fsnt4m9en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_8SudczZMiTuI3Y0CvSA_xSyvuGTVuvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742602166391-dvb4vb5io7u16pdq3e20m82fsnt4m9en.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
