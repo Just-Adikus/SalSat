@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
+// import 'package:sal_sat/generated/locale_keys.g.dart';
+// import 'package:easy_localization/easy_localization.dart';
+// import  'package:easy_localization/src/public_ext.dart';
 class ProductImagePicker extends StatefulWidget {
   //const ProductImagePicker({Key? key}) : super(key: key);
 
@@ -33,7 +35,7 @@ class _ProductImagePickerState extends State<ProductImagePicker> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    "Pic Image From",
+                    'Pic_Image_From'.tr,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
@@ -46,7 +48,7 @@ class _ProductImagePickerState extends State<ProductImagePicker> {
                       pickImage(ImageSource.camera);
                     },
                     icon: Icon(Icons.camera),
-                    label: Text("Camera"),
+                    label: Text('Camera'.tr),
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
@@ -54,7 +56,7 @@ class _ProductImagePickerState extends State<ProductImagePicker> {
                       pickImage(ImageSource.gallery);
                     },
                     icon: Icon(Icons.image),
-                    label: Text("Gallery"),
+                    label: Text('Gallery'.tr),
                   ),
                   SizedBox(
                     height: 10,
@@ -64,7 +66,7 @@ class _ProductImagePickerState extends State<ProductImagePicker> {
                       Get.back();
                     },
                     icon: Icon(Icons.close),
-                    label: Text("Cancel"),
+                    label: Text('Cancel'.tr),
                   ),
                 ],
               ),
@@ -114,7 +116,7 @@ class _ProductImagePickerState extends State<ProductImagePicker> {
         ElevatedButton.icon(
           onPressed: imagePickerOption,
           icon: Icon(Icons.image),
-          label: Text('Add Image'),
+          label: Text('Add_Image'.tr),
         ),
       ],
     );

@@ -1,7 +1,10 @@
+// import 'package:sal_sat/generated/locale_keys.g.dart';
+
 import '/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+// import 'package:easy_localization/easy_localization.dart';
+// import  'package:easy_localization/src/public_ext.dart';
 class SignUpScreen extends StatefulWidget {
   SignUpScreen({Key? key}) : super(key: key);
 
@@ -35,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         centerTitle: true,
-        title: Text('SignUp Screen'),
+        title: Text('SignUp_Screen'.tr),
       ),
       body: Card(
         child: Container(
@@ -49,19 +52,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Container(
                     width: 150,
                     height: 150,
-                    child: Image.network(
-                      'https://cdn.pixabay.com/photo/2017/05/15/13/56/sign-up-2314914_1280.png',
-                      fit: BoxFit.contain,
-                    ),
+                    child:Image.asset('assets/images/shop.png')
+                    // Image.network(
+                    //   'https://cdn.pixabay.com/photo/2017/05/15/13/56/sign-up-2314914_1280.png',
+                    //   fit: BoxFit.contain,
+                    // ),
                   ),
                   TextFormField(
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                      labelText: 'User Name',
+                      labelText: ('User_Name'.tr),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'User Name Required';
+                        return 'User_Name_Required'.tr;
                       }
                       return null;
                     },
@@ -72,11 +76,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      labelText: 'Email',
+                      labelText: 'Email'.tr,
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email Required';
+                        return 'Email_Required'.tr;
                       }
                       return null;
                     },
@@ -86,10 +90,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   TextFormField(
                     obscureText: true,
-                    decoration: InputDecoration(labelText: 'Password'),
+                    decoration: InputDecoration(labelText: 'Password'.tr),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Password Required';
+                        return 'Password_Required'.tr;
                       }
                       return null;
                     },
@@ -102,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   ElevatedButton(
                     onPressed: signUp,
-                    child: Text('Submit'),
+                    child: Text('Submit'.tr),
                   ),
                 ],
               ),

@@ -1,8 +1,10 @@
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sal_sat/generated/locale_keys.g.dart';
 
 class CommanDialog {
- static showLoading({String title = "Loading..."}) {
+ static showLoading({String title = ""}) {
     Get.dialog(
       Dialog(
         shape: RoundedRectangleBorder(
@@ -40,7 +42,7 @@ class CommanDialog {
   }
 
  static showErrorDialog(
-      {String title = "Oops Error",
+      {String title = 'Oops Error',
       String description = "Something went wrong "}) {
     Get.dialog(
       Dialog(
@@ -66,7 +68,7 @@ class CommanDialog {
                 onPressed: () {
                   if (Get.isDialogOpen!) Get.back();
                 },
-                child: Text("Okay"),
+                child: Text('Okay'.tr),
               ),
             ],
           ),

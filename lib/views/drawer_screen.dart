@@ -1,9 +1,13 @@
+// import 'package:sal_sat/generated/locale_keys.g.dart';
+import 'package:sal_sat/views/favourite_screen.dart';
+
 import '/controllers/data_controller.dart';
 import '/views/login_user_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
+// import 'package:easy_localization/easy_localization.dart';
+// import  'package:easy_localization/src/public_ext.dart';
 import 'login_screen.dart';
 import 'settings_screen.dart';
 
@@ -36,13 +40,13 @@ class _AppDrawerState extends State<AppDrawer> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      'User : ${controller.userProfileData['userName']}',
+                      '${'User'.tr}: ${controller.userProfileData['userName']}',
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                     FittedBox(
                       child: Text(
-                        'Join Date :${DateFormat.yMMMMd().format(DateTime.fromMillisecondsSinceEpoch(controller.userProfileData['joinDate']))} ',
+                        '${'Join_Date'.tr} :${DateFormat.yMMMMd().format(DateTime.fromMillisecondsSinceEpoch(controller.userProfileData['joinDate']))} ',
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
@@ -52,15 +56,23 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
               ListTile(
                 leading: Icon(Icons.person),
-                title: const Text('Your Product'),
+                title:  Text('Your_Product'.tr),
                 onTap: () {
                   Get.back();
                   Get.to(() => LoginUserProductScreen());
                 },
               ),
               ListTile(
+                leading: Icon(Icons.favorite),
+                title:  Text('Favourites'.tr),
+                onTap: () {
+                  Get.back();
+                  Get.to(() => FavoritesScreen());
+                },
+              ),
+              ListTile(
                 leading: Icon(Icons.settings),
-                title: const Text('Settings'),
+                title: Text('Settings'.tr),
                 onTap: () {
                   Get.back();
                   Get.to(() => SettingsScreen());
@@ -68,13 +80,13 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
               ListTile(
                 leading: Icon(Icons.logout),
-                title: const Text('LogOut'),
+                title: Text('LogOut'.tr),
                 onTap: () {
                         Get.back();
                         // // Clear the user data from the controller
                         // controller.clearUserData();
                         // Navigate to the login screen
-                        Get.offAllNamed('/login');
+                        Get.to(() => LoginScreen());
                 },
               ),
             ],

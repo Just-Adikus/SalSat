@@ -1,9 +1,7 @@
-import '/controllers/auth_controller.dart';
-import '/views/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-//import 'package:get/utils.dart';
+import '/controllers/auth_controller.dart';
+import '/views/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -33,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Login Screen'),
+        title: Text('Login_Screen'.tr),
       ),
       body: Card(
         child: Container(
@@ -43,21 +41,23 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Center(
               child: ListView(
                 shrinkWrap: true,
-                  children: [
-                    Text(
+                children: [
+                  Text(
                     'SalSat',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize:24,fontWeight: FontWeight.w600)),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                  ),
                   SizedBox(
                     height: 20,
                   ),
                   Container(
                     width: 100,
                     height: 100,
-                    child: Image.network(
-                      'https://www.maxpixel.net/static/photo/1x/Icon-Business-Profile-Person-Avatar-Symbol-User-5355896.png',
-                      fit: BoxFit.contain,
-                    ),
+                    child: Image.asset('assets/images/shop.png')
+                    // Image.network(
+                    //   'https://www.maxpixel.net/static/photo/1x/Icon-Business-Profile-Person-Avatar-Symbol-User-5355896.png',
+                    //   fit: BoxFit.contain,
+                    // ),
                   ),
                   SizedBox(
                     height: 20,
@@ -65,11 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      labelText: 'Email',
+                      labelText: 'Email'.tr,
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email Required';
+                        return 'Email_Required'.tr;
                       }
                       return null;
                     },
@@ -79,10 +79,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextFormField(
                     obscureText: true,
-                    decoration: InputDecoration(labelText: 'Password'),
+                    decoration: InputDecoration(labelText: 'Password'.tr),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Password Required';
+                        return 'Password_Required'.tr;
                       }
                       return null;
                     },
@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   ElevatedButton(
                     onPressed: login,
-                    child: Text('Login Now'),
+                    child: Text('Login_Now'.tr),
                   ),
                   Container(
                     alignment: Alignment.centerRight,
@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Get.to(() => SignUpScreen());
                       },
                       child: Text(
-                        "Don't Have an Account ? Sign up",
+                        'Don_t_Have_an_Account_Sign_up'.tr,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,

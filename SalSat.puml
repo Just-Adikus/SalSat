@@ -1,0 +1,186 @@
+@startuml
+set namespaceSeparator ::
+
+class "sal_sat::controllers::auth_controller.dart::AuthController" {
+  +dynamic userId
+  +Future<void> singUp()
+  +Future<void> login()
+}
+
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "sal_sat::controllers::auth_controller.dart::AuthController"
+
+class "sal_sat::controllers::comman_dailog.dart::CommanDialog" {
+  {static} +dynamic showLoading()
+  {static} +dynamic hideLoading()
+  {static} +dynamic showErrorDialog()
+}
+
+class "sal_sat::controllers::data_controller.dart::DataController" {
+  +FirebaseFirestore firebaseInstance
+  +Map<dynamic, dynamic> userProfileData
+  +List<Product> loginUserData
+  +List<Product> allProduct
+  +AuthController authController
+  +void onReady()
+  +Future<void> getUserProfileData()
+  +Future<void> addNewProduct()
+  +Future<void> getLoginUserProduct()
+  +Future<void> getAllProduct()
+  +Future<dynamic> editProduct()
+  +Future<dynamic> deleteProduct()
+  +void clearUserData()
+}
+
+"sal_sat::controllers::data_controller.dart::DataController" o-- "cloud_firestore::cloud_firestore.dart::FirebaseFirestore"
+"sal_sat::controllers::data_controller.dart::DataController" o-- "sal_sat::controllers::auth_controller.dart::AuthController"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "sal_sat::controllers::data_controller.dart::DataController"
+
+class "sal_sat::main.dart::MyApp" {
+  +State<MyApp> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "sal_sat::main.dart::MyApp"
+
+class "sal_sat::main.dart::_MyAppState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "sal_sat::main.dart::_MyAppState"
+
+class "sal_sat::models::product_model.dart::Product" {
+  +String productname
+  +double productprice
+  +String productuploaddate
+  +String productimage
+  +String userId
+  +int phonenumber
+  +String productId
+}
+
+class "sal_sat::views::addproduct_screen.dart::AddProductScreen" {
+  +State<AddProductScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "sal_sat::views::addproduct_screen.dart::AddProductScreen"
+
+class "sal_sat::views::addproduct_screen.dart::_AddProductScreenState" {
+  +DataController controller
+  -dynamic _userImageFile
+  -GlobalKey<FormState> _formKey
+  +Map<String, dynamic> productData
+  -void _pickedImage()
+  +dynamic addProduct()
+  +Widget build()
+}
+
+"sal_sat::views::addproduct_screen.dart::_AddProductScreenState" o-- "sal_sat::controllers::data_controller.dart::DataController"
+"sal_sat::views::addproduct_screen.dart::_AddProductScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "sal_sat::views::addproduct_screen.dart::_AddProductScreenState"
+
+class "sal_sat::views::drawer_screen.dart::AppDrawer" {
+  +State<AppDrawer> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "sal_sat::views::drawer_screen.dart::AppDrawer"
+
+class "sal_sat::views::drawer_screen.dart::_AppDrawerState" {
+  +DataController controller
+  -void _logOut()
+  +Widget build()
+}
+
+"sal_sat::views::drawer_screen.dart::_AppDrawerState" o-- "sal_sat::controllers::data_controller.dart::DataController"
+"flutter::src::widgets::framework.dart::State" <|-- "sal_sat::views::drawer_screen.dart::_AppDrawerState"
+
+class "sal_sat::views::home_screen.dart::HomeScreen" {
+  +State<HomeScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "sal_sat::views::home_screen.dart::HomeScreen"
+
+class "sal_sat::views::home_screen.dart::_HomeScreenState" {
+  +DataController controller
+  +Widget build()
+}
+
+"sal_sat::views::home_screen.dart::_HomeScreenState" o-- "sal_sat::controllers::data_controller.dart::DataController"
+"flutter::src::widgets::framework.dart::State" <|-- "sal_sat::views::home_screen.dart::_HomeScreenState"
+
+class "sal_sat::views::login_screen.dart::LoginScreen" {
+  +_LoginScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "sal_sat::views::login_screen.dart::LoginScreen"
+
+class "sal_sat::views::login_screen.dart::_LoginScreenState" {
+  -GlobalKey<FormState> _formKey
+  +Map<String, String> userLoginData
+  +AuthController controller
+  +dynamic login()
+  +Widget build()
+}
+
+"sal_sat::views::login_screen.dart::_LoginScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"sal_sat::views::login_screen.dart::_LoginScreenState" o-- "sal_sat::controllers::auth_controller.dart::AuthController"
+"flutter::src::widgets::framework.dart::State" <|-- "sal_sat::views::login_screen.dart::_LoginScreenState"
+
+class "sal_sat::views::login_user_product_screen.dart::LoginUserProductScreen" {
+  +State<LoginUserProductScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "sal_sat::views::login_user_product_screen.dart::LoginUserProductScreen"
+
+class "sal_sat::views::login_user_product_screen.dart::_LoginUserProductScreenState" {
+  +DataController controller
+  +TextEditingController editPriceValue
+  +dynamic editProduct()
+  +Widget build()
+}
+
+"sal_sat::views::login_user_product_screen.dart::_LoginUserProductScreenState" o-- "sal_sat::controllers::data_controller.dart::DataController"
+"sal_sat::views::login_user_product_screen.dart::_LoginUserProductScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "sal_sat::views::login_user_product_screen.dart::_LoginUserProductScreenState"
+
+class "sal_sat::views::product_image_picker.dart::ProductImagePicker" {
+  +void Function(File) getImageValue
+  +State<ProductImagePicker> createState()
+}
+
+"sal_sat::views::product_image_picker.dart::ProductImagePicker" o-- "null::void Function(File)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "sal_sat::views::product_image_picker.dart::ProductImagePicker"
+
+class "sal_sat::views::product_image_picker.dart::_ProductImagePickerState" {
+  +dynamic pickedImage
+  +void imagePickerOption()
+  +dynamic pickImage()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "sal_sat::views::product_image_picker.dart::_ProductImagePickerState"
+
+class "sal_sat::views::settings_screen.dart::SettingsScreen" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "sal_sat::views::settings_screen.dart::SettingsScreen"
+
+class "sal_sat::views::sign_up_screen.dart::SignUpScreen" {
+  +_SignUpScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "sal_sat::views::sign_up_screen.dart::SignUpScreen"
+
+class "sal_sat::views::sign_up_screen.dart::_SignUpScreenState" {
+  -GlobalKey<FormState> _formKey
+  +Map<String, String> userSignupData
+  +AuthController controller
+  +dynamic signUp()
+  +Widget build()
+}
+
+"sal_sat::views::sign_up_screen.dart::_SignUpScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"sal_sat::views::sign_up_screen.dart::_SignUpScreenState" o-- "sal_sat::controllers::auth_controller.dart::AuthController"
+"flutter::src::widgets::framework.dart::State" <|-- "sal_sat::views::sign_up_screen.dart::_SignUpScreenState"
+
+
+@enduml

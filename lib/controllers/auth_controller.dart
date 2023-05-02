@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:easy_localization/easy_localization.dart';
+// import 'package:sal_sat/generated/locale_keys.g.dart';
 import '/controllers/comman_dailog.dart';
 import '/views/home_screen.dart';
 import 'package:get/get.dart';
@@ -38,16 +40,16 @@ class AuthController extends GetxController {
       CommanDialog.hideLoading();
       if (e.code == 'weak-password') {
         CommanDialog.showErrorDialog(
-            description: "The password provided is too weak.");
+            description: ('The_password_provided_is_too_weak'.tr));
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         CommanDialog.showErrorDialog(
-            description: "The account already exists for that email.");
+            description: ('The_account_already_exists_for_that_email'.tr));
         print('The account already exists for that email.');
       }
     } catch (e) {
       CommanDialog.hideLoading();
-      CommanDialog.showErrorDialog(description: "Something went worng");
+      CommanDialog.showErrorDialog(description:('Something_went_wrong'.tr));
       print(e);
     }
   }
@@ -68,11 +70,11 @@ class AuthController extends GetxController {
       CommanDialog.hideLoading();
       if (e.code == 'user-not-found') {
         CommanDialog.showErrorDialog(
-            description: "No user found for that email");
+            description: ('No_user_found_for_that_email'.tr));
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         CommanDialog.showErrorDialog(
-            description: "Wrong password provided for that user.");
+            description: ('Wrong_password_provided_for_that_user'.tr));
         print('Wrong password provided for that user.');
       }
     }

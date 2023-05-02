@@ -8,6 +8,8 @@ class Product {
   final String userId;
   final int phonenumber;
   final String productId;
+  final String productdescription; // добавлено поле для описания товара
+  final String productcategory; // добавлено поле для категории товара
 
   Product(
       {required this.productname,
@@ -16,5 +18,7 @@ class Product {
       required this.userId,
       required this.productimage,
       required this.phonenumber,
-      required this.productId});
+      required this.productId,
+      required this.productdescription, // обновлено для описания товара
+      required this.productcategory}); // обновлено для категории товара
 }

@@ -1,7 +1,10 @@
+// import 'package:sal_sat/generated/locale_keys.g.dart';
+
 import '/controllers/data_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+// import 'package:easy_localization/easy_localization.dart';
+// import  'package:easy_localization/src/public_ext.dart';
 class LoginUserProductScreen extends StatefulWidget {
   const LoginUserProductScreen({Key? key}) : super(key: key);
 
@@ -30,7 +33,8 @@ class _LoginUserProductScreenState extends State<LoginUserProductScreen> {
             child: Column(
               children: [
                 TextFormField(
-                  decoration: InputDecoration(labelText: "Enter new price"),
+                  decoration:
+                      InputDecoration(labelText: 'Enter_new_price'.tr),
                   controller: editPriceValue,
                 ),
                 SizedBox(
@@ -41,7 +45,7 @@ class _LoginUserProductScreenState extends State<LoginUserProductScreen> {
                     Get.back();
                     controller.editProduct(productID, editPriceValue.text);
                   },
-                  child: Text('Submit'),
+                  child: Text('Submit'.tr),
                 ),
               ],
             ),
@@ -59,12 +63,12 @@ class _LoginUserProductScreenState extends State<LoginUserProductScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Product'),
+        title: Text('My_Product'.tr),
       ),
       body: GetBuilder<DataController>(
         builder: (controller) => controller.loginUserData.isEmpty
             ? Center(
-                child: Text('😔 NO DATA FOUND PLEASE ADD DATA 😔'),
+                child: Text('NO_DATA_FOUND_PLEASE_ADD_DATA'.tr),
               )
             : ListView.builder(
                 itemCount: controller.loginUserData.length,
@@ -86,14 +90,28 @@ class _LoginUserProductScreenState extends State<LoginUserProductScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Text(
-                                "Product Name: ${controller.loginUserData[index].productname}",
+                                "${'Product_Name'.tr}: ${controller.loginUserData[index].productname}",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Price: ${controller.loginUserData[index].productprice.toString()}',
+                                '${'Product_Price'.tr}: ${controller.loginUserData[index].productprice.toString()}',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "${'Product_Description'.tr}: ${controller.loginUserData[index].productdescription}",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "${'Product_Category'.tr}: ${controller.loginUserData[index].productcategory}",
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                         Padding(
@@ -108,14 +126,14 @@ class _LoginUserProductScreenState extends State<LoginUserProductScreen> {
                                       controller
                                           .loginUserData[index].productprice);
                                 },
-                                child: Text('Edit'),
+                                child: Text('Edit'.tr),
                               ),
                               ElevatedButton(
                                 onPressed: () {
                                   controller.deleteProduct(controller
                                       .loginUserData[index].productId);
                                 },
-                                child: Text('Delete'),
+                                child: Text('Delete'.tr),
                               ),
                             ],
                           ),
